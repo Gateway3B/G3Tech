@@ -85,51 +85,54 @@ export class G3 implements Object {
 
         const left3Start = new Quaternion().copy(left3.parent!.quaternion);
         const right2Start = new Quaternion().copy(right2.parent!.quaternion);
-        const interp3 = new Interp(duration, SmoothType.EASYALL);
+        const interp3R = new Interp(duration, SmoothType.EASYALL);
+        const interp3L = new Interp(duration, SmoothType.EASYALL);
         const anim3 = {
             loop: false,
             done: true,
             action: (deltaTime: number, stager: Stager) => {
-                if (interp3.done()) {
+                if (interp3L.done() && interp3R.done()) {
                     anim3.done = true;
                     anim4.done = false;
                 }
-                right2.parent?.quaternion.slerpQuaternions(right2Start, end, interp3.increment(deltaTime));
-                left3.parent?.quaternion.slerpQuaternions(left3Start, end, interp3.percent());
+                right2.parent?.quaternion.slerpQuaternions(right2Start, end, interp3R.increment(deltaTime));
+                left3.parent?.quaternion.slerpQuaternions(left3Start, end, interp3L.increment(deltaTime));
             }
         };
         this.animations.set('anim3', anim3);
 
         const right3Start = new Quaternion().copy(right3.parent!.quaternion);
         const left2Start = new Quaternion().copy(left2.parent!.quaternion);
-        const interp2 = new Interp(duration, SmoothType.EASYALL);
+        const interp2L = new Interp(duration, SmoothType.EASYALL);
+        const interp2R = new Interp(duration, SmoothType.EASYALL);
         const anim2 = {
             loop: false,
             done: true,
             action: (deltaTime: number, stager: Stager) => {
-                if (interp2.done()) {
+                if (interp2R.done() && interp2L.done()) {
                     anim2.done = true;
                     anim3.done = false;
                 }
-                right3.parent?.quaternion.slerpQuaternions(right3Start, end, interp2.increment(deltaTime));
-                left2.parent?.quaternion.slerpQuaternions(left2Start, end, interp2.percent());
+                right3.parent?.quaternion.slerpQuaternions(right3Start, end, interp2R.increment(deltaTime));
+                left2.parent?.quaternion.slerpQuaternions(left2Start, end, interp2L.increment(deltaTime));
             }
         };
         this.animations.set('anim2', anim2);
 
         const right1Start = new Quaternion().copy(right1.parent!.quaternion);
         const left1Start = new Quaternion().copy(left1.parent!.quaternion);
-        const interp1 = new Interp(duration, SmoothType.EASYALL);
+        const interp1L = new Interp(duration, SmoothType.EASYALL);
+        const interp1R = new Interp(duration, SmoothType.EASYALL);
         const anim1 = {
             loop: false,
             done: true,
             action: (deltaTime: number, stager: Stager) => {
-                if (interp1.done()) {
+                if (interp1L.done() && interp1R) {
                     anim1.done = true;
                     anim2.done = false;
                 }
-                right1.parent?.quaternion.slerpQuaternions(right1Start, end, interp1.increment(deltaTime));
-                left1.parent?.quaternion.slerpQuaternions(left1Start, end, interp1.percent());
+                right1.parent?.quaternion.slerpQuaternions(right1Start, end, interp1R.increment(deltaTime));
+                left1.parent?.quaternion.slerpQuaternions(left1Start, end, interp1L.increment(deltaTime));
             }
         };
         this.animations.set('anim1', anim1);

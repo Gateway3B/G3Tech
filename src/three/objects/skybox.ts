@@ -11,7 +11,7 @@ export class Skybox implements Object {
     
     spawn: StagerAction = (stager: Stager) => {
         const nebula = new THREE.TextureLoader().load('../../../Nebula.png', () => {
-            setTimeout(() => stager.paused = false, 800);
+            setTimeout(() => stager.paused = false, 500);
         });
         
         const materal = new THREE.MeshBasicMaterial({
