@@ -23,12 +23,14 @@ export class Stager {
 	constructor() {
 		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.renderer.setSize(window.innerWidth, window.innerHeight);
-
-        // const abientLight = new THREE.AmbientLight(0xfffff);
-        // this.add(abientLight);
+		
         const pointLight = new THREE.PointLight(0xfffff);
         pointLight.position.set(5, 5, 5);
         this.add(pointLight);
+		
+		document.body.onresize = ((event) => {
+			this.renderer.setSize(window.innerWidth, window.innerHeight);
+		});
 	}
 
 	getRenderer() { return this.renderer }

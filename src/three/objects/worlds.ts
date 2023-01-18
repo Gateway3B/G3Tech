@@ -1,5 +1,6 @@
-import { EquirectangularReflectionMapping, Euler, Mesh, MeshPhysicalMaterial, Object3D, SphereGeometry } from "three";
+import { EquirectangularReflectionMapping, Euler, Event, Group, Mesh, MeshPhysicalMaterial, Object3D, SphereGeometry, Vector3 } from "three";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
+import type { Animation } from '../helpers/animator';
 import type { StagerAction, Stager } from '../helpers/stager';
 
 export class Worlds implements Object {
@@ -8,7 +9,7 @@ export class Worlds implements Object {
     animations: Map<String, Animation> = new Map();
     
     spawn: StagerAction = (stager: Stager) => {
-        const color = 0xf00c00;
+        const color = 0x2fafa3;
         const hdr = new RGBELoader().load('../../../PureSky.hdr', () => {
             hdr.mapping = EquirectangularReflectionMapping;
         });
@@ -26,7 +27,30 @@ export class Worlds implements Object {
         const geometry = new SphereGeometry(1);
         const sphere = new Mesh(geometry, material);
         sphere.position.set(-20, 0, 0);
+        const world = new Group();
+        world.add(sphere);
+        this.objects.set('PianoWorld', world);
+        
+        const target = new Group();
+        stager.add(target);
+        this.objects.set('PianoWorldTarget', target);
 
-        stager.add(sphere);
+        const worldToTarget: Animation = {
+            loop: false,
+            done: true,
+            action: (deltaTime: number, stager: Stager) => {
+                const targetPosition = target.position;
+                const targetNormalizedVector = new Vector3(0,0,0);
+                targetNormalizedVector.x = targetPosition.x - world.position.x;
+                targetNormalizedVector.y = targetPosition.y - world.position.y;
+                targetNormalizedVector.z = targetPosition.z - world.position.z;
+                targetNormalizedVector.normalize()
+                // group.add(objectToMove);
+            }
+        };
+        this.animations.set('worldToTarget', worldToTarget);
+
+
+
     }
 }
