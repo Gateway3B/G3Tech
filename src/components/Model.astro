@@ -1,0 +1,33 @@
+---
+import type { Model } from './Models.astro';
+
+interface Props {
+    params: Model
+}
+
+const { params } = Astro.props;
+---
+
+<div onclick={`window.open('${params.public_url}', '_blank')`}>
+    <img src={params.preview_image} />
+    <h2>
+        {params.name}
+    </h2>
+</div>
+
+<style>
+    div {
+        height: 100%;
+        width: 40%;
+        margin: 2%;
+        border: solid white;
+        border-radius: 20px;
+        padding: 2%;
+        display: flex;
+        flex-direction: column;
+    }
+    div:hover {
+        background-color: blueviolet;
+        cursor: pointer;
+    }
+</style>

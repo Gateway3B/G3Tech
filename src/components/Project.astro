@@ -1,0 +1,60 @@
+---
+import type { Project } from '../pages/coding.astro';
+
+interface Props {
+    params: Project
+}
+
+const { params } = Astro.props;
+
+const daysSince = Math.floor((new Date().getTime() - new Date(params.updated_at).getTime()) / (1000 * 60 * 60 * 24));
+---
+
+<section>
+    <div id="details">
+        <a href={params.html_url} target="_blank">
+            <h2>{params.name}</h2>
+        </a>
+        <h2 class={params.language?.toLowerCase().replace('#', '')}>{params.language}</h2>
+        <h3><time>{daysSince}</time> Days </h3>
+    </div>
+    <p>{params.description}</p>
+</section>
+
+<style>
+    #details {
+        display: grid;
+        grid-template-columns: 40% 40% 20%;
+        min-width: 50%;
+        margin-right: 5%;
+        align-items: center;
+    }
+    #details > * {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    section {
+        display: flex;
+        align-content: space-around;
+        align-items: center;
+    }
+    .rust {
+        color: orange;
+    }
+    .typescript {
+        color: green;
+    }
+    .javascript {
+        color: blue;
+    }
+    .c, .asp, .matlab {
+        color: burlywood;
+    }
+    .java {
+        color: red;
+    }
+    time {
+        font-style: italic;
+        color: #bbbbbb;
+    }
+</style>

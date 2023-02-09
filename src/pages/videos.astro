@@ -1,0 +1,29 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import Videos, { getPlaylist } from '../components/Videos.astro';
+
+const skiingPlaylistId = "PLTc_B8owmCvh-T35sWwDhNPS3XFSvppyu";
+const playlist = (await getPlaylist(skiingPlaylistId)).items;
+
+
+const miscPlaylistId = "PLTc_B8owmCvhY0NYG1muwfAKse5s9YCwt";
+const miscPlaylist = (await getPlaylist(miscPlaylistId)).items;
+playlist.push(...miscPlaylist);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<Videos params={playlist}/>
+		</main>
+		<Footer />
+	</body>
+</html>

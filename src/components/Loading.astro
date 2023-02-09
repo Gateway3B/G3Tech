@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import { SITE_TITLE } from '../config';
+import { SITE_DESCRIPTION } from '../config';
+---
+<script>
+    const lowerAlpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    const upperAlpha = lowerAlpha.map(alpha => alpha.toUpperCase());
+    const numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const alphaNumerals = [...lowerAlpha, ...upperAlpha, ...numerals];
+
+    const title = document.querySelector('h1')!;
+    const description = document.querySelector('h2')!;
+
+    const hackerAnimate = (element: HTMLElement) => {
+        const stayCount = 2;
+        const cycleTime = 80;
+        
+        const fullText = element.getAttribute('full-text')!;
+        
+        let cycleCount = 0;
+
+        const cycle = setInterval(function() {
+            const letterIndex = Math.floor(cycleCount / stayCount);
+
+            if (letterIndex > fullText.length) {
+                element.setAttribute('done', true);
+                clearInterval(cycle);
+            }
+
+            const settledText = fullText.slice(0, letterIndex);
+            const randomText = [...fullText.slice(letterIndex, fullText.length)]
+                .map(() => {
+                    const index = Math.floor(Math.random() * alphaNumerals.length);
+                    const randomLetter = alphaNumerals[index];
+
+                    return randomLetter;
+                });
+            element.textContent = settledText + randomText;
+
+            cycleCount++;
+        }, cycleTime);
+    }
+
+    hackerAnimate(title);
+    hackerAnimate(description);
+</script>
+
+<style>
+    #card {
+        position: fixed;
+        left: 20%;
+        top: 10%;
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+    h2 {
+        font-size: 3rem;
+    }
+</style>
+
+<div id="card">
+    <h1 full-text={`Loading ${SITE_TITLE}...`}></h1>
+    <h2 full-text={SITE_DESCRIPTION}></h2>
+</div>

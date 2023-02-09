@@ -1,5 +1,6 @@
 # build output
 dist/
+*.tar
 
 # dependencies
 node_modules/

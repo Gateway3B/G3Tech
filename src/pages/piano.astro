@@ -1,0 +1,24 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import Videos, { getPlaylist } from '../components/Videos.astro';
+
+const playlistId = "PLTc_B8owmCvgHMqRqoOX0STgr8Knunb0D";
+const playlist = (await getPlaylist(playlistId)).items;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<Videos params={playlist}/>
+		</main>
+		<Footer />
+	</body>
+</html>

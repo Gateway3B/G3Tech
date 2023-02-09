@@ -1,4 +1,4 @@
-import type { Object3D } from 'three';
+import { Object3D, Vector2 } from 'three';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import type { Object } from './object';
@@ -17,10 +17,12 @@ export class Stager {
 	});
 	loader = new GLTFLoader();
 	animator = new Animator(this);
+	mouse = new Vector2(0, 0)
 
 	objects: Map<String, Object> = new Map();
 	
 	constructor() {
+		document.addEventListener('mousemove', (ev: MouseEvent) => this.mouse = new Vector2(ev.clientX, ev.clientY));
 		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.renderer.setSize(window.innerWidth, window.innerHeight);
 		

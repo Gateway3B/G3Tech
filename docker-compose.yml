@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    web:
+        image: 'g3tech'
+        container_name: web
+        networks:
+            - g3tech
+        expose:
+            - 80
+        environment:
+            - VIRTUAL_HOST=g3tech.net
+            - VIRTUAL_PORT=80
+            - LETSENCRYPT_HOST=g3tech.net
+
+networks:
+    g3tech:
+        name: g3tech

@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+	content: {
+		title: string;
+		faviconLink: string;
+        siteUrl: string;
+        description: string;
+        header1: string;
+        description1: string;
+        header2: string;
+        description2: string;
+        header3: string;
+        description3: string;
+	};
+}
+
+const {
+	content: { 
+        title, 
+        faviconLink, 
+        siteUrl, 
+        description, 
+        header1,
+        description1,
+        header2,
+        description2,
+        header3,
+        description3
+    },
+} = Astro.props;
+---
+<script>
+    const anchors = document.querySelectorAll('article a');
+    anchors.forEach(anchor => {
+        anchor.setAttribute('target', '__blank');
+        anchor.setAttribute('rel', 'noopener noreferrer');
+    })
+</script>
+
+<article>
+    <link rel="icon" type={`image/${faviconLink.slice(faviconLink.indexOf('.', -1) + 1)}`} href={faviconLink} />
+    <header>
+        <a href={siteUrl}>
+            <img src={faviconLink} height="100px" width="100px"/>
+        </a>
+        <h1>{title}</h1>
+    </header>
+    <section>
+        <p>
+            {description}
+        </p>
+    </section>
+    <section>
+        <div>
+            <h2>{header1}</h2>        
+            <p>{description1}</p>
+        </div>
+        <div>
+            <h2>{header2}</h2>        
+            <p>{description2}</p>
+        </div>
+        <div>
+            <h2>{header3}</h2>        
+            <p>{description3}</p>
+        </div>
+    </section>
+</article>
+
+<style>
+    article {
+        margin-bottom: 3rem;
+    }
+    h1 {
+        font-size: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    header {
+        display: flex;
+        align-items: center;
+    }
+    header > a {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    section {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    section > div {
+        display: block;
+        max-width: 28%;
+    }
+    img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+</style>

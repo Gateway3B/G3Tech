@@ -1,0 +1,49 @@
+---
+import type { Playlist } from './Videos.astro';
+import { youtubeVideoTemplate } from './Videos.astro';
+
+interface Props {
+    params: Playlist
+}
+
+const { params } = Astro.props;
+---
+
+<div onclick={`setVideo('${youtubeVideoTemplate}${params.snippet.resourceId.videoId}')`}>
+    <section>
+        <img src={params.snippet.thumbnails.default.url} width={params.snippet.thumbnails.default.width} height={params.snippet.thumbnails.default.height} />
+        <h2>
+            {params.snippet.title}
+        </h2>
+    </section>
+    <p>
+        {params.snippet.description}
+    </p>
+</div>
+
+<style>
+    div {
+        margin: 2%;
+        border: solid white;
+        border-radius: 20px;
+        padding: 2%;
+        display: flex;
+        flex-direction: column;
+        width: -webkit-fill-available;
+    }
+    div:hover {
+        background-color: blueviolet;
+        cursor: pointer;
+    }
+    section {
+        display: flex;
+        align-items: center;
+    }
+    img {
+        max-height: 100%;
+        margin: 2%;
+    }
+    p {
+        white-space: pre-line;
+    }
+</style>

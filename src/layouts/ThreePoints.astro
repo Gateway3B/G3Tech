@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+    title: string;
+    faviconLink: string;
+    siteUrl: string;
+}
+
+const {
+    title, 
+    faviconLink, 
+    siteUrl, 
+} = Astro.props;
+---
+<script>
+    const anchors = document.querySelectorAll('article a');
+    anchors.forEach(anchor => {
+        anchor.setAttribute('target', '__blank');
+        anchor.setAttribute('rel', 'noopener noreferrer');
+    })
+</script>
+
+<article onclick={`window.open('${siteUrl}', '_blank')`}>
+    <link rel="icon" type={`image/${faviconLink.slice(faviconLink.indexOf('.', -1) + 1)}`} href={faviconLink} />
+    <header>
+        <a href={siteUrl}>
+            <img src={faviconLink} height="100px" width="100px"/>
+        </a>
+        <h1>{title}</h1>
+    </header>
+    <section>
+        <slot name="description" />
+    </section>
+    <section>
+        <div>
+            <slot name="point1" class="point" />
+        </div>
+        <div>
+            <slot name="point2" />
+        </div>
+        <div>
+            <slot name="point3" />
+        </div>
+    </section>
+</article>
+
+<style>
+    article {
+        margin-bottom: 3rem;
+        cursor: pointer;
+    }
+    h1 {
+        font-size: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    header {
+        display: flex;
+        align-items: center;
+    }
+    header > a {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    section {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    section > div {
+        max-width: 28%;
+    }
+    img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+</style>

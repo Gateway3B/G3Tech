@@ -1,0 +1,73 @@
+---
+import Video from './Video.astro';
+
+interface Playlists {
+    items: Playlist[];
+}
+
+export interface Playlist {
+    id: string;
+    snippet: {
+        title: string;
+        description: string;
+        thumbnails: {
+            default: {
+                url: string;
+                width: string;
+                height: string;
+            }
+        },
+        resourceId: {
+            videoId: string;
+        }
+    }
+}
+
+export const getPlaylist = async (playlistId: string) => {
+    const youtubePlaylistApi = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&key=${import.meta.env.YOUTUBE_API_KEY}`;
+    return await fetch(`${youtubePlaylistApi}${playlistId}`).then(r => r.json()) as Playlists
+};
+
+export const youtubeVideoTemplate = 'https://www.youtube.com/embed/';
+
+interface Props {
+    params: Playlist[]
+}
+
+const { params } = Astro.props;
+---
+<section>
+    <iframe width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div>
+        {
+            params.map(video => (
+                    <Video params={video} />
+            ))
+        }
+    </div>
+</section>
+
+<script is:inline>
+    function setVideo(src) {
+        const iframe = document.querySelector('iframe');
+        iframe.setAttribute('src', src);
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+</script>
+
+<script define:vars={{ src: `${youtubeVideoTemplate}${params[0].snippet.resourceId.videoId}` }}>
+    const iframe = document.querySelector('iframe');
+    iframe.setAttribute('src', src);
+</script>
+
+<style>
+    div {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>

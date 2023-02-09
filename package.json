@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "dockerbuild": "astro build && docker build -t g3tech .",
+    "deploy": ".\\deploy\\deploy.bat"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.13.0",

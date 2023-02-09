@@ -1,0 +1,75 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import Project from '../components/Project.astro';
+
+const getDate = (dateStr: string) => {
+    let date = new Date(dateStr);
+
+    return 'Y-m-d'
+        .replace('Y', date.getFullYear().toString())
+        .replace('m', (date.getMonth() + 1).toString())
+        .replace('d', date.getDate().toString());
+}
+
+export interface Project {
+    name: string,
+    html_url: string,
+    description: string,
+    created_at: string, 
+    updated_at: string,
+	pushed_at: string,
+    language: string,
+    fork: boolean
+}
+
+const githubApi = "https://api.github.com/users/Gateway3B/repos";
+const data = await fetch(githubApi).then(r => r.json()) as Project[];
+
+const projects = data
+    .filter(project => !project.fork)
+    .sort((a, b) => new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf())
+    .map(project => {
+        const created_at = getDate(project.created_at);
+        const updated_at = getDate(project.pushed_at);
+        return {
+            ...project,
+            created_at,
+            updated_at
+        };
+    });
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			ul {
+				list-style-type: none;
+				padding: unset;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section>
+				<ul>
+                    {
+                        projects.map(project => (
+                            <li>
+								<Project params={project} />
+							</li>
+                            <hr/>
+							<br/>
+                        ))
+                    }
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

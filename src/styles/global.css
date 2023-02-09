@@ -1,3 +1,8 @@
+@font-face {
+	font-family: 'Moonbeam';
+	src: local('Moonbeam'), url(./_MOONB___.TTF), format('truetype');
+}
+
 canvas {
 	position: fixed;
 	top: 0;
@@ -10,16 +15,17 @@ canvas {
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 body {
-	font-family: Verdana, sans-serif;
+	font-family: Moonbeam;
 	margin: auto;
 	padding: 20px;
-	max-width: 65ch;
+	max-width: 75ch;
 	text-align: left;
-	background-color: #fff;
+	background-color: #131516;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
-	color: #444;
+	color: #e8e6e3;
+	overflow-y: scroll;
 }
 h1,
 h2,
@@ -29,10 +35,14 @@ h5,
 h6,
 strong,
 b {
-	color: #222;
+	font-family: Moonbeam;
+	color: #e8e6e3;
 }
 a {
-	color: #3273dc;
+	color: #e8e6e3;
+}
+p {
+	font-family: Verdana, sans-serif;
 }
 nav a {
 	margin-right: 10px;
@@ -70,4 +80,21 @@ blockquote {
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
 	font-style: italic;
+}
+
+::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #575e62;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #484e51;
+}
+::-webkit-scrollbar-corner {
+    background-color: #181a1b;
 }

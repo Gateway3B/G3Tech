@@ -1,0 +1,36 @@
+---
+import Model from './Model.astro';
+
+export interface Model {
+    id: number;
+    name: string;
+    public_url: string;
+    thumbnail: string;
+    preview_image: string;
+}
+
+const thingiverseApi = 'https://api.thingiverse.com/users/Gateway3/things';
+const models = await fetch(thingiverseApi, { headers: { Authorization: import.meta.env.THINGIVERSE_API_TOKEN } }).then(r => r.json()) as Model[];
+---
+<section>
+    <div>
+        {
+            models.map(model => (
+                    <Model params={model}/>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
