@@ -23,7 +23,7 @@ export class Worlds implements Object {
         let targeting = false;
         let targetingId = -1;
         let lastTime = 0;
-        const debounceTime = 0.9;
+        const debounceTime = 0.6;
         let worldsCreated = false;
         const worldToTarget: Animation = {
             loop: false,

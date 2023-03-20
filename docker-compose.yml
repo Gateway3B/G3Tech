@@ -16,3 +16,4 @@ services:
 networks:
     g3tech:
         name: g3tech
+        external: true

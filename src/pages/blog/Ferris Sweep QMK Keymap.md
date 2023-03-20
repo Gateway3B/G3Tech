@@ -74,4 +74,4 @@ I keep changing my map to meet new challenges and find better solutions. With th
 |:---------:|:-----------:|:-----------:|:------------:|:----------:|:-:|:-------:|:-----------:|:-----------:|:------------:|:-------------:|
 |    tab    |  fast move  | scroll down |     shift    | pause/play |   | mouse 4 |  mouse left |  mouse down |  mouse right |     enter     |
 | l control |    l win    |    l alt    | print screen |    pause   |   |  r alt  |    r win    | scroll lock |   r control  |      n/a      |
-|           |             |             | ctrl/win     | slow move  |   | space   | layer       |             |              |               |
+|           |             |             | ctrl/win     | slow move  |   | left click | right click |             |              |               |

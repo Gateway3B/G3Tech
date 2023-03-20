@@ -3,7 +3,6 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../config';
 import ExternalSite from './ExternalSite.astro';
 ---
-<div id="topBackground"/>
 <header>
 	<h2>
 		{SITE_TITLE}
@@ -16,36 +15,46 @@ import ExternalSite from './ExternalSite.astro';
 		<HeaderLink href="/videos">Videos</HeaderLink>
 		<HeaderLink href="/modeling">Modeling</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
+	</nav>
+	<div>
 		<ExternalSite href="https://youtube.com/@gateway3" name="YouTube" iconUrl="https://www.youtube.com/s/desktop/d8e1215c/img/favicon.ico" />
 		<ExternalSite href="https://github.com/Gateway3B?tab=repositories" name="Github" iconUrl="https://encrypted-tbn1.gstatic.com/favicon-tbn?q=tbn:ANd9GcTZ7C_jqA09oRFbRDWkweZSZopc_lg4QayKGI14wIeM7XiQNpqbcVMzR-xIE20noCBvyj98dGB5HSQeSfUinKUeIluLGLd7Wws_q8jI--4m"/>
 		<ExternalSite href="https://www.thingiverse.com/gateway3/designs" name="Thingiverse" iconUrl="https://encrypted-tbn3.gstatic.com/favicon-tbn?q=tbn:ANd9GcTGQaTMV7qKRrp9zfJhzaelCNyI5HHu6V2AMIgJ7QNdvR6vXMhjZ19HiGe_7fnxaZswonBpzx6HAg97ZAc50fQ3iC9x0uv6D2-Guxc9lY1SkMlzQfnabG9x"/>
 		<ExternalSite href="https://www.noteflight.com/profile/908b735988b1df5120ef81196727af0316c84eab" name="Noteflight" iconUrl="https://encrypted-tbn0.gstatic.com/favicon-tbn?q=tbn:ANd9GcRGibJHl6dqhqsQZHpFJpeh03RrBt1AjWRXXaegXISQrI3CMhOmMySqB3NpcfavcupimPqs04-kjKxaz4OcpSlbE9jVPycZ4EZfPaw9g9hpnivylLKwiiM"/>
 		<ExternalSite href="https://flat.io/@gateway3b" name="Flat" iconUrl="https://encrypted-tbn0.gstatic.com/favicon-tbn?q=tbn:ANd9GcSKWfSl8bQcPdwb8grO4Fp89HDYYyrHL7YJFCReU9GbnxCkcKNRrOmmUJjDHQUo8dJGVBySISb2Zbw0Jqt_y-aISSoXTbakMpb0wRAD"/>
 		<ExternalSite href="https://www.printables.com/social/118001-gateway3/models" name="Printables" iconUrl="https://encrypted-tbn2.gstatic.com/favicon-tbn?q=tbn:ANd9GcTbj_91aniySgcWnfG6A7cXH2U2ZDhOm0OplUtUQe5kuw9EeKTrhAzUjmJQrPs0MNxquIbmMsrZF6oCrXC1L485oOtgwauyt56zEV-wvx8wRIWzuKoIeCM"/>
-	</nav>
+	</div>
 </header>
 <style>
-	#topBackground {
-		position: absolute;
-		top: 0%;
-		left: 0%;
-		width: 100%;
-		height: 8%;
-		border-bottom: solid green;
-		z-index: -1;
-		background-color: rgba(255, 255, 255, 0.205);
+	@media screen and (min-width: 1200px) {
+		header {
+			flex-direction: row;
+			align-items: baseline;
+		}
+	}
+	@media screen and (max-width: 1200px) {
+		header {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 	header {
 		display: flex;
-		align-items: baseline;
 		justify-content: space-between;
 		margin: 0em 0 2em;
 		position: relative;
 		min-width: 120%;
 		left: -10%;
+		border-bottom: solid green;
+		background-color: rgba(255, 255, 255, 0.205);
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 	h2 {
 		margin: 0%;
 		font-size: 3rem;
+	}
+	nav, div {
+		margin-bottom: 10px;
 	}
 </style>
