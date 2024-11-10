@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "install:all": "npm install astro && npm install && astro telemetry disable",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -13,13 +14,13 @@
     "deploy": ".\\deploy\\deploy.bat"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.13.0",
-    "@astrojs/rss": "^1.2.1",
-    "@astrojs/sitemap": "^1.0.0",
-    "astro": "^1.7.2",
-    "three": "^0.148.0"
+    "@astrojs/mdx": "^3.1.9",
+    "@astrojs/rss": "^4.0.9",
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^4.16.10",
+    "three": "^0.170.0"
   },
   "devDependencies": {
-    "@types/three": "^0.146.0"
+    "@types/three": "^0.169.0"
   }
 }

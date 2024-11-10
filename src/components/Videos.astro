@@ -37,11 +37,11 @@ interface Props {
 const { params } = Astro.props;
 ---
 <section>
-    <iframe width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <div>
         {
             params.map(video => (
-                    <Video params={video} />
+                <Video params={video} />
             ))
         }
     </div>
@@ -55,15 +55,20 @@ const { params } = Astro.props;
     }
 </script>
 
-<script define:vars={{ src: `${youtubeVideoTemplate}${params[0].snippet.resourceId.videoId}` }}>
+<script define:vars={{ src: `${youtubeVideoTemplate}${params[0]?.snippet.resourceId.videoId}` }}>
     const iframe = document.querySelector('iframe');
     iframe.setAttribute('src', src);
 </script>
 
 <style>
+    iframe {
+        width: 70vw;
+        height: calc(70vw / (16 / 9))
+    }
     div {
         display: flex;
         flex-wrap: wrap;
+        max-width: 95vw;
     }
     section {
         display: flex;

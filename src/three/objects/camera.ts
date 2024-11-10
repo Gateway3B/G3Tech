@@ -1,14 +1,12 @@
-import { Euler, Group, Interpolant, InterpolateSmooth, MathUtils, Object3D, Quaternion, Vector2, Vector3 } from 'three';
-import * as THREE from 'three';
+import { Euler, Group, MathUtils, Object3D, Quaternion, Vector2, Vector3 } from 'three';
 import type { Animation } from '../helpers/animator';
 import type { Stager, StagerAction } from '../helpers/stager';
 import type { Object } from '../helpers/object';
 import { Interp, SmoothType } from '../helpers/interp';
-import { moveTo } from './worlds';
 
 export class Camera implements Object {
     name = 'Camera';
-    objects: Map<String, Object3D<Event>> = new Map();
+    objects: Map<String, Object3D> = new Map();
     animations: Map<String, Animation> = new Map();
     
     spawn: StagerAction = (stager: Stager) => {

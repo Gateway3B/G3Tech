@@ -1,0 +1,32 @@
+---
+import ThreePoints from '../../layouts/ThreePoints.astro';
+---
+<ThreePoints title="Crab Game" faviconLink="/Craber.png" siteUrl="https://crabgame.g3tech.net">
+    <p slot="description">
+        Small browser game written in Rust with Bevy, compiled to WASM.
+    </p>
+    <div slot="point1">
+        <h2>
+            Bevy
+        </h2>
+        <p>
+            Bevy is a rust game engine. It is a bit unique because Rust doesn't have classes, so it relies on a querying and composable systems based approach.
+        </p>
+    </div>
+    <div slot="point2">
+        <h2>
+            Crab
+        </h2>
+        <p>
+            I made the crab in blender, including its animations. The game is really just a demo of the crab and its animations. I like its little special dance.
+        </p>
+    </div>
+    <div slot="point3">
+        <h2>
+            Music
+        </h2>
+        <p>
+            I made a little theme song for the game written in MuseScore 4. The output audio was outputted by the default MuseScore player. (If it doesn't play try reloading)
+        </p>
+    </div>
+</ThreePoints>

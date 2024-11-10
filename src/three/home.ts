@@ -16,8 +16,8 @@ stager.createObject(new Worlds());
 stager.paused = true;
 
 const runChecker = setInterval(function () {
-    const title = document.querySelector('h1')!;
-    const description = document.querySelector('h2')!;
+    const title = document.querySelector('[id^="title"][selected="true"]')!;
+    const description = document.querySelector('[id^="description"][selected="true"]')!;
 
     if (title.getAttribute('done') && description.getAttribute('done')) {
         clearInterval(runChecker);

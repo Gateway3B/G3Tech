@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 export enum SmoothType {
     FLAT,
     EASYALL,

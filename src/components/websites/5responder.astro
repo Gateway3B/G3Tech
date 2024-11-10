@@ -1,0 +1,32 @@
+---
+import ThreePoints from '../../layouts/ThreePoints.astro';
+---
+<ThreePoints title="Responder" faviconLink="/Responder.png" siteUrl="https://discord.com/oauth2/authorize?client_id=787058315782782977&permissions=11264&integration_type=0&scope=applications.commands+bot">
+    <p slot="description">
+        Discord bot that allows for users to add custom responses to trigger phrases.
+    </p>
+    <div slot="point1">
+        <h2>
+            Discord Native
+        </h2>
+        <p>
+            Uses discord buttons to select specific responses. Uses slash commands.
+        </p>
+    </div>
+    <div slot="point2">
+        <h2>
+            Heavy Cutomization 
+        </h2>
+        <p>
+            Options include trigger string, response string, exact match vs contains, listen to only a specific user, role, or channel, and choose to respond in a different channel than where the trigger occured.
+        </p>
+    </div>
+    <div slot="point3">
+        <h2>
+            Up To 25 Responses
+        </h2>
+        <p>
+            Add up to 25 seperate responses. Responder remembers who made the response and adds it to the response embed.
+        </p>
+    </div>
+</ThreePoints>

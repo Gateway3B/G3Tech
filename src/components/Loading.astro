@@ -9,10 +9,21 @@ import { SITE_DESCRIPTION } from '../config';
     const numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     const alphaNumerals = [...lowerAlpha, ...upperAlpha, ...numerals];
 
-    const title = document.querySelector('h1')!;
-    const description = document.querySelector('h2')!;
 
-    const hackerAnimate = (element: HTMLElement) => {
+    let title;
+    let description;
+    if (window.innerWidth > 700) {
+        title = document.querySelector('#title-large')!;
+        description = document.querySelector('#description-large')!; 
+    } else {
+        title = document.querySelector('#title-small')!;
+        description = document.querySelector('#description-small')!;
+    }
+
+    title.setAttribute('selected', 'true')
+    description.setAttribute('selected', 'true')
+
+    const hackerAnimate = (element: Element) => {
         const stayCount = 2;
         const cycleTime = 80;
         
@@ -24,7 +35,7 @@ import { SITE_DESCRIPTION } from '../config';
             const letterIndex = Math.floor(cycleCount / stayCount);
 
             if (letterIndex > fullText.length) {
-                element.setAttribute('done', true);
+                element.setAttribute('done', 'true');
                 clearInterval(cycle);
             }
 
@@ -62,7 +73,9 @@ import { SITE_DESCRIPTION } from '../config';
     }
 </style>
 
-<div id="card">
-    <h1 full-text={`Loading ${SITE_TITLE}...`}></h1>
-    <h2 full-text={SITE_DESCRIPTION}></h2>
+<div id="card" style="max-width: unset;">
+    <h1 id="title-large" full-text={`Loading ${SITE_TITLE}`}></h1>
+    <h2 id="description-large" full-text={SITE_DESCRIPTION}></h2>
+    <h3 id="title-small" full-text={`Loading ${SITE_TITLE}`}></h1>
+    <h4 id="description-small" full-text={SITE_DESCRIPTION}></h2>
 </div>

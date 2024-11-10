@@ -6,13 +6,14 @@ import * as THREE from 'three';
 
 export class Skybox implements Object {
     name = 'Skybox';
-    objects: Map<String, Object3D<Event>> = new Map();
+    objects: Map<String, Object3D> = new Map();
     animations: Map<String, Animation> = new Map();
     
     spawn: StagerAction = (stager: Stager) => {
         const nebula = new THREE.TextureLoader().load('../../../Nebula.png', () => {
             // setTimeout(() => stager.paused = false, 500);
         });
+        nebula.colorSpace = THREE.SRGBColorSpace;
         
         const materal = new THREE.MeshBasicMaterial({
             map: nebula,

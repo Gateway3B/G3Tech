@@ -1,0 +1,32 @@
+---
+import ThreePoints from '../../layouts/ThreePoints.astro';
+---
+<ThreePoints title="Poller" faviconLink="/Poller.png" siteUrl="https://discord.com/oauth2/authorize?client_id=875212382736109579&permissions=0&integration_type=0&scope=applications.commands+bot">
+    <p slot="description">
+        Discord bot that allows you to run complex polls.
+    </p>
+    <div slot="point1">
+        <h2>
+            Discord Native
+        </h2>
+        <p>
+            Uses discord buttons to input responses. Uses slash commands.
+        </p>
+    </div>
+    <div slot="point2">
+        <h2>
+            Heavy Customization
+        </h2>
+        <p>
+            Poll settings include type (first past the post, reverse, and instant runoff), multiple votes per person, allowed role, real time vote results, and time limit.
+        </p>
+    </div>
+    <div slot="point3">
+        <h2>
+            Poll Bar Chart
+        </h2>
+        <p>
+            Uses the sharp and vega libraries to output a bar chart image of the results.
+        </p>
+    </div>
+</ThreePoints>

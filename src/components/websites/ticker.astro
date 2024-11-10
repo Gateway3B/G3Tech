@@ -1,0 +1,32 @@
+---
+import ThreePoints from '../../layouts/ThreePoints.astro';
+---
+<ThreePoints title="Ticker" faviconLink="/Ticker.png" siteUrl="https://discord.com/oauth2/authorize?client_id=852694774518382603&permissions=0&integration_type=0&scope=bot+applications.commands">
+    <p slot="description">
+        Discord bot for displaying the stock values.
+    </p>
+    <div slot="point1">
+        <h2>
+            Save Tickers
+        </h2>
+        <p>
+            Save up to 10 tickers that can all be displayed together. Use /addticker to add to the list and /showtickers to see them all.
+        </p>
+    </div>
+    <div slot="point2">
+        <h2>
+            Current Value
+        </h2>
+        <p>
+            Use /ticker to show the current value of a ticker symbol.
+        </p>
+    </div>
+    <div slot="point3">
+        <h2>
+            Delete Tickers
+        </h2>
+        <p>
+            Use /deleteticker to remove a ticker from your saved list.
+        </p>
+    </div>
+</ThreePoints>

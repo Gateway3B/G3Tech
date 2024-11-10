@@ -1,10 +1,10 @@
-import { Clock, Euler, Event, Group, MathUtils, Mesh, Object3D, Quaternion, Scene, Vector3 } from 'three';
+import { Euler, Group, MathUtils, Mesh, Object3D, Quaternion, Scene, Vector3 } from 'three';
 import type { Animation } from '../helpers/animator';
 import type { Stager, StagerAction } from '../helpers/stager';
 import type { Object } from '../helpers/object';
 import * as THREE from 'three';
-import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry';
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { Interp, SmoothType } from '../helpers/interp';
 
 interface Offset {
@@ -19,7 +19,7 @@ interface Size {
 
 export class G3 implements Object {
     name = 'G3';
-    objects: Map<String, Object3D<Event>> = new Map();
+    objects: Map<String, Object3D> = new Map();
     animations: Map<String, Animation> = new Map();
     
     spawn: StagerAction = (stager: Stager) => {
@@ -138,16 +138,15 @@ export class G3 implements Object {
         this.animations.set('anim1', anim1);
     };
 
-    private spawnBeam(stager: Stager, name: String, parent: Object3D<Event> | undefined, 
+    private spawnBeam(stager: Stager, name: String, parent: Object3D | undefined, 
         { width, height }: Size,
         pivotOffset: Offset,
         centerOffset: Offset,
         rotDir?: boolean
     ) {
         const color = 0x00cc00;
-        const hdr = new RGBELoader().load('../../../PureSky.hdr', () => {
-            hdr.mapping = THREE.EquirectangularReflectionMapping;
-        });
+        const hdr = new RGBELoader().load('../../../PureSky.hdr', () => {});
+        hdr.colorSpace = THREE.SRGBColorSpace;
         const material = new THREE.MeshPhysicalMaterial({
             metalness: 0,
             roughness: 0,

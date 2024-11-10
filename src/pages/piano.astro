@@ -6,7 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import Videos, { getPlaylist } from '../components/Videos.astro';
 
 const playlistId = "PLTc_B8owmCvgHMqRqoOX0STgr8Knunb0D";
-const playlist = (await getPlaylist(playlistId)).items;
+const playlist = (await getPlaylist(playlistId)).items ?? [];
 ---
 
 <!DOCTYPE html>

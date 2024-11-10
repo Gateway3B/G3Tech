@@ -21,12 +21,24 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 			}
 			ul li {
 				display: flex;
-				font-size:xx-large;
+				font-size: xx-large;
+                justify-content: space-between;
 			}
 			ul li time {
-				flex: 0 0 230px;
-				font-style: italic;
+				font-style: italic;   
+                padding-right: 10px;
 			}
+            main {
+                width: -webkit-fill-available;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            body {
+                height: 100vh;
+            }
+            #footer {
+                margin-top: auto;
+            }
 		</style>
 	</head>
 	<body>
@@ -51,6 +63,8 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 				</ul>
 			</section>
 		</main>
-		<Footer />
+        <div id="footer">
+            <Footer />
+        </div>
 	</body>
 </html>

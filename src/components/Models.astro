@@ -10,13 +10,19 @@ export interface Model {
 }
 
 const thingiverseApi = 'https://api.thingiverse.com/users/Gateway3/things';
-const models = await fetch(thingiverseApi, { headers: { Authorization: import.meta.env.THINGIVERSE_API_TOKEN } }).then(r => r.json()) as Model[];
+let models_resp = await fetch(thingiverseApi, { headers: { Authorization: import.meta.env.THINGIVERSE_API_TOKEN } }).then(r => r.json());
+let models: Model[];
+if (models_resp.error) {
+    models = [];
+} else {
+    models = models_resp;
+}
 ---
 <section>
     <div>
         {
             models.map(model => (
-                    <Model params={model}/>
+                <Model params={model}/>
             ))
         }
     </div>
@@ -32,5 +38,7 @@ const models = await fetch(thingiverseApi, { headers: { Authorization: import.me
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-right: .5rem;
+        margin-left: .5rem;
     }
 </style>

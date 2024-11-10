@@ -8,7 +8,7 @@ interface Props {
 const { params } = Astro.props;
 ---
 
-<div onclick={`window.open('${params.public_url}', '_blank')`}>
+<div onclick={`window.open('${params?.public_url}', '_blank')`}>
     <img src={params.preview_image} />
     <h2>
         {params.name}
@@ -20,7 +20,7 @@ const { params } = Astro.props;
         height: 100%;
         width: 40%;
         margin: 2%;
-        border: solid white;
+        border: solid rgb(217, 219, 210);;
         border-radius: 20px;
         padding: 2%;
         display: flex;

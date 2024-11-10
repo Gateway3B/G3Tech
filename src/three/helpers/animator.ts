@@ -1,6 +1,6 @@
 import type { Stager } from './stager';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { Clock, Event, Object3D } from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import { Clock, Object3D, AnimationMixer, type Event } from 'three';
 
 export type AnimationAction = (deltaTime: number, stager: Stager) => void;
 
@@ -13,10 +13,14 @@ export interface Animation {
 export class Animator {
 
     controls: OrbitControls;
-    mixers: THREE.AnimationMixer[] = [];
+    mixers: AnimationMixer[] = [];
 
     constructor(private stager: Stager) {
         this.controls = new OrbitControls(this.stager.camera, this.stager.renderer.domElement)
+        this.controls.enableDamping = true;
+        if (window.innerWidth / window.innerHeight <= 1.2) {
+            this.controls.enabled = false;
+        }
         this.animateBootstrap();
     }
 
@@ -59,7 +63,7 @@ export class Animator {
             stager.render();
         }
 
-        function updateMatrixWorldRecursive(object: Object3D<Event>) {
+        function updateMatrixWorldRecursive(object: Object3D) {
             object.children.forEach(child => {
                 child.updateMatrixWorld();
                 updateMatrixWorldRecursive(child);

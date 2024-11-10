@@ -11,27 +11,36 @@ export class Stager {
     paused = true;
 
 	scene = new THREE.Scene();
-	camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+	camera = new THREE.PerspectiveCamera(window.innerWidth / window.innerHeight > 1.2 ? 50 : 110, window.innerWidth / window.innerHeight, 0.1, 1000);
 	renderer = new THREE.WebGLRenderer({
 		canvas: document.querySelector('#bg') as HTMLCanvasElement
 	});
 	loader = new GLTFLoader();
 	animator = new Animator(this);
-	mouse = new Vector2(0, 0)
+	mouse = new Vector2(0, 0);
+    mouseDown = false;
 
 	objects: Map<String, Object> = new Map();
 	
 	constructor() {
-		document.addEventListener('mousemove', (ev: MouseEvent) => this.mouse = new Vector2(ev.clientX, ev.clientY));
+		document.addEventListener('mousemove', (ev: MouseEvent) => {
+            this.mouse = new Vector2(ev.clientX, ev.clientY);
+        });
+		document.addEventListener('mousedown', (ev: MouseEvent) => {
+            this.mouse = new Vector2(ev.clientX, ev.clientY);
+        });
 		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.renderer.setSize(window.innerWidth, window.innerHeight);
-		
-        const pointLight = new THREE.PointLight(0xfffff);
+
+        const pointLight = new THREE.PointLight(0xffffff);
         pointLight.position.set(5, 5, 5);
         this.add(pointLight);
 		
 		document.body.onresize = ((event) => {
 			this.renderer.setSize(window.innerWidth, window.innerHeight);
+            this.camera.fov = window.innerWidth / window.innerHeight > 1.2 ? 50 : 110;
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+            this.camera.updateProjectionMatrix()
 		});
 	}
 

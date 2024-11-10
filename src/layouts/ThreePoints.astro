@@ -27,11 +27,11 @@ const {
         <a href={siteUrl}>
             <img src={faviconLink} height="100px" width="100px"/>
         </a>
-        <h1>{title}</h1>
+        <div>
+            <h1>{title}</h1>
+            <slot name="description" />
+        </div>
     </header>
-    <section>
-        <slot name="description" />
-    </section>
     <section>
         <div>
             <slot name="point1" class="point" />
@@ -75,5 +75,6 @@ const {
     img {
         max-width: 100px;
         max-height: 100px;
+        width: -webkit-fill-available;
     }
 </style>

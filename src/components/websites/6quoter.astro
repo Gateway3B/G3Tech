@@ -1,0 +1,32 @@
+---
+import ThreePoints from '../../layouts/ThreePoints.astro';
+---
+<ThreePoints title="Quoter" faviconLink="/Quoter.png" siteUrl="https://discord.com/oauth2/authorize?client_id=1193963937146880071&permissions=2048&integration_type=0&scope=bot+applications.commands">
+    <p slot="description">
+        Discord bot that allows you to save quotes from your users then randomly retrieve them.
+    </p>
+    <div slot="point1">
+        <h2>
+            Discord Native
+        </h2>
+        <p>
+            Uses discord buttons, modals, slash commands, and message commands. Right click a message to add it as a quote. Supports pagination of quotes using buttons to navigate.
+        </p>
+    </div>
+    <div slot="point2">
+        <h2>
+            Quotes
+        </h2>
+        <p>
+            Save quotes from your server members. You can type the quotes in, or save specific discord messages.
+        </p>
+    </div>
+    <div slot="point3">
+        <h2>
+            Download
+        </h2>
+        <p>
+            You can download your quotes to a .csv file.
+        </p>
+    </div>
+</ThreePoints>

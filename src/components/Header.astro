@@ -4,16 +4,17 @@ import { SITE_TITLE } from '../config';
 import ExternalSite from './ExternalSite.astro';
 ---
 <header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
+    <a href="/" style="text-decoration: none;">
+        <h2>
+            {SITE_TITLE}
+        </h2>
+    </a>
 	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/websites">Websites</HeaderLink>
-		<HeaderLink href="/coding">Coding</HeaderLink>
+		<HeaderLink href="/sites">Sites</HeaderLink>
+		<HeaderLink href="/code">Code</HeaderLink>
 		<HeaderLink href="/piano">Piano</HeaderLink>
 		<HeaderLink href="/videos">Videos</HeaderLink>
-		<HeaderLink href="/modeling">Modeling</HeaderLink>
+		<HeaderLink href="/models">Models</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
 	</nav>
 	<div>
@@ -25,6 +26,7 @@ import ExternalSite from './ExternalSite.astro';
 		<ExternalSite href="https://www.printables.com/social/118001-gateway3/models" name="Printables" iconUrl="https://encrypted-tbn2.gstatic.com/favicon-tbn?q=tbn:ANd9GcTbj_91aniySgcWnfG6A7cXH2U2ZDhOm0OplUtUQe5kuw9EeKTrhAzUjmJQrPs0MNxquIbmMsrZF6oCrXC1L485oOtgwauyt56zEV-wvx8wRIWzuKoIeCM"/>
 	</div>
 </header>
+<div id="header-divider"></div>
 <style>
 	@media screen and (min-width: 1400px) {
 		header {
@@ -37,22 +39,18 @@ import ExternalSite from './ExternalSite.astro';
 			flex-direction: column;
 			align-items: center;
 		}
-		nav {
-			margin-left: 45px;
-		}
 	}
 	header {
 		display: flex;
 		justify-content: space-between;
-		margin: 0em 0 2em;
-		position: relative;
-		min-width: 120%;
-		left: -10%;
-		border-bottom: solid green;
-		background-color: rgba(255, 255, 255, 0.205);
-		padding-left: 10px;
-		padding-right: 10px;
+        width: -webkit-fill-available;
 	}
+    #header-divider {
+        max-width: 100vw;
+        width: -webkit-fill-available;
+        border-bottom: solid rgb(217, 219, 210) 5px;
+        margin-bottom: 1rem;
+    }
 	h2 {
 		margin: 0%;
 		font-size: 3rem;
