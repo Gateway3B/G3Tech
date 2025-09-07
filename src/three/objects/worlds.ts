@@ -32,12 +32,16 @@ export class Worlds implements Object {
             action: (deltaTime: number, stager: Stager) => {
 
                 if (!worldsCreated) {
+                    let height = 10;
+                    if (window.innerHeight > window.innerWidth) {
+                        height = 20
+                    }
                     this.worlds.push(this.createWorld(stager, new Vector3(-20, 0, 0), new Vector3(-6, 0, 0), 0x710f89, 'Code'));
-                    this.worlds.push(this.createWorld(stager, new Vector3(-2, -10, 0), new Vector3(-2, -4, 0), 0x7562bc, 'Videos'));
-                    this.worlds.push(this.createWorld(stager, new Vector3(2, -10, 0), new Vector3(2, -4, 0), 0x56526f, 'Models'));
+                    this.worlds.push(this.createWorld(stager, new Vector3(-2, -height, 0), new Vector3(-2, -4, 0), 0x7562bc, 'Videos'));
+                    this.worlds.push(this.createWorld(stager, new Vector3(2, -height, 0), new Vector3(2, -4, 0), 0x56526f, 'Models'));
                     this.worlds.push(this.createWorld(stager, new Vector3(20, 0, 0), new Vector3(6, 0, 0), 0x013763, 'Piano'));
-                    this.worlds.push(this.createWorld(stager, new Vector3(-2, 10, 0), new Vector3(-2, 4, 0), 0x146466, 'Sites'));
-                    this.worlds.push(this.createWorld(stager, new Vector3(2, 10, 0), new Vector3(2, 4, 0), 0x346f61, 'Blog'));
+                    this.worlds.push(this.createWorld(stager, new Vector3(-2, height, 0), new Vector3(-2, 4, 0), 0x146466, 'Sites'));
+                    this.worlds.push(this.createWorld(stager, new Vector3(2, height, 0), new Vector3(2, 4, 0), 0x346f61, 'Blog'));
                     worldsCreated = true;
                     document.body.onmousedown = (event) => {
                         if (targeting) {

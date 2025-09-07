@@ -1,0 +1,32 @@
+---
+import ThreePoints from '../../layouts/ThreePoints.astro';
+---
+<ThreePoints title="Lol Draft" faviconLink="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-shared-components/global/default/emerald.png" siteUrl="https://loldraft.g3tech.net">
+    <p slot="description">
+        Simple League of Legends draft tool.
+    </p>
+    <div slot="point1">
+        <h2>
+            Leptos
+        </h2>
+        <p>
+            Written in the Leptos ui framework. Compiles rust to wasm. Functionally similar to Solid.js.
+        </p>
+    </div>
+    <div slot="point2">
+        <h2>
+            Websockets
+        </h2>
+        <p>
+            Uses websockets to sync a draft between many people.
+        </p>
+    </div>
+    <div slot="point3">
+        <h2>
+            Community Dragon
+        </h2>
+        <p>
+            Uses the community dragon apis to get league of legends assets.
+        </p>
+    </div>
+</ThreePoints>

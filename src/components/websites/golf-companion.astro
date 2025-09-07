@@ -1,0 +1,32 @@
+---
+import ThreePoints from '../../layouts/ThreePoints.astro';
+---
+<ThreePoints title="Golf Companion" faviconLink="/golf-companion-favicon.png" siteUrl="https://golfcompanion.g3tech.net">
+    <p slot="description">
+        App to coordinate golf games.
+    </p>
+    <div slot="point1">
+        <h2>
+            Dioxus
+        </h2>
+        <p>
+            Written in the Dioxus ui framework. Compiles rust to wasm for web, or runs natively on android or ios devices by using webview for rendering. Functionally similar to react, but with Solid.js like performance. It does this using Sledgehammer.js for interop to the dom and compiler based checks to limit the diffing engine to the dynamically updating parts of the dom.
+        </p>
+    </div>
+    <div slot="point2">
+        <h2>
+            Golf Games
+        </h2>
+        <p>
+            Allows users to create golf games, place bets, and calculate winners and winnings. Choose your club, course, and game. Select seperate games for every 9 or 6 holes. Chose teams for each matchup. Live scorecard updates on everyone's device when modified. Get live calculations of who is winning a match, and how much money is owed to whom.
+        </p>
+    </div>
+    <div slot="point3">
+        <h2>
+            SurrealDb
+        </h2>
+        <p>
+            Uses the multi modal rust based SurrealBb. Uses relation tables for graph connections, and text analyzers with edgengrams for searching golf clubs, along with geometric calculations for closest club. Built in live queries allow for hookups between the database and frontend with websockets through the backend server.
+        </p>
+    </div>
+</ThreePoints>
