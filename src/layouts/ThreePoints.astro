@@ -21,31 +21,35 @@ const {
     })
 </script>
 
-<article onclick={`window.open('${siteUrl}', '_blank')`}>
-    <link rel="icon" type={`image/${faviconLink.slice(faviconLink.indexOf('.', -1) + 1)}`} href={faviconLink} />
-    <header>
-        <a href={siteUrl}>
+<a href=`${siteUrl}` target="_blank">
+    <article>
+        <link rel="icon" type={`image/${faviconLink.slice(faviconLink.indexOf('.', -1) + 1)}`} href={faviconLink} />
+        <header>
             <img src={faviconLink} height="100px" width="100px"/>
-        </a>
-        <div>
-            <h1>{title}</h1>
-            <slot name="description" />
-        </div>
-    </header>
-    <section>
-        <div>
-            <slot name="point1" class="point" />
-        </div>
-        <div>
-            <slot name="point2" />
-        </div>
-        <div>
-            <slot name="point3" />
-        </div>
-    </section>
-</article>
+            <div>
+                <h1>{title}</h1>
+                <slot name="description" />
+            </div>
+        </header>
+        <section>
+            <div>
+                <slot name="point1" class="point" />
+            </div>
+            <div>
+                <slot name="point2" />
+            </div>
+            <div>
+                <slot name="point3" />
+            </div>
+        </section>
+    </article>
+</a>
 
 <style>
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
     article {
         margin-bottom: 3rem;
         cursor: pointer;
@@ -59,7 +63,7 @@ const {
         display: flex;
         align-items: center;
     }
-    header > a {
+    header > img {
         margin-left: 5%;
         margin-right: 5%;
     }

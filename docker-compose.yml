@@ -4,6 +4,8 @@ services:
     web:
         image: g3tech
         container_name: g3tech
-        env_file: .env
+        environment:
+            - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+            - THINGIVERSE_API_TOKEN=${THINGIVERSE_API_TOKEN}
         ports:
             - 1000:80

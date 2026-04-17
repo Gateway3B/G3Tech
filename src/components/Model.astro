@@ -8,14 +8,20 @@ interface Props {
 const { params } = Astro.props;
 ---
 
-<div onclick={`window.open('${params?.public_url}', '_blank')`}>
-    <img src={params.preview_image} />
-    <h2>
-        {params.name}
-    </h2>
+<div>
+    <a href=`${params?.public_url}`, target="_blank">
+        <img src={params.preview_image} />
+        <h2>
+            {params.name}
+        </h2>
+    </a>
 </div>
 
 <style>
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
     div {
         height: 100%;
         width: 40%;

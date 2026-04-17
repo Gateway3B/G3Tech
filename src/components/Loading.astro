@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { SITE_TITLE } from '../config';
 import { SITE_DESCRIPTION } from '../config';
+import Header from './Header.astro';
 ---
 <script>
     const lowerAlpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -73,9 +74,11 @@ import { SITE_DESCRIPTION } from '../config';
     }
 </style>
 
-<div id="card" style="max-width: unset;">
-    <h1 id="title-large" full-text={`Loading ${SITE_TITLE}`}></h1>
-    <h2 id="description-large" full-text={SITE_DESCRIPTION}></h2>
-    <h3 id="title-small" full-text={`Loading ${SITE_TITLE}`}></h1>
-    <h4 id="description-small" full-text={SITE_DESCRIPTION}></h2>
-</div>
+<a href="/sites">
+    <div id="card" style="max-width: unset;">
+        <h1 id="title-large" full-text={`Loading ${SITE_TITLE}`}></h1>
+        <h2 id="description-large" full-text={SITE_DESCRIPTION}></h2>
+        <h3 id="title-small" full-text={`Loading ${SITE_TITLE}`}></h1>
+        <h4 id="description-small" full-text={SITE_DESCRIPTION}></h2>
+    </div>
+</a>
