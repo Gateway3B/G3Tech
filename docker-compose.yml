@@ -2,7 +2,7 @@ version: '3'
 
 services:
     web:
-        image: hl-docker-repository.g3tech.net/g3tech:latest
+        image: hl-docker-registry.g3tech.net/g3tech:latest
         container_name: g3tech
         environment:
             - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
