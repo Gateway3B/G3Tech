@@ -1,6 +1,6 @@
 set ip=10.0.0.40
 
-docker save g3tech:latest > ./g3tech.tar
+docker save ghcr.io/gateway3b/g3tech:latest > ./g3tech.tar
 
 scp g3tech.tar matthewweisfeld@%ip%:~/Documents/G3Tech/Server/G3Tech
 

@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "dockerbuild": "astro build && docker build -t g3tech .",
+    "dockerbuild": "docker build -f dockerfile -t ghcr.io/gateway3b/g3tech:latest .",
     "deploy": ".\\deploy\\deploy.bat"
   },
   "dependencies": {

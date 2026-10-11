@@ -1,2 +1,2 @@
-# G3Tech.net
+# Gateway3.net
 Creations by Gateway3

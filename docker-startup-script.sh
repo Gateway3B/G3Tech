@@ -1,3 +1,6 @@
-#!bin/sh
+#!/bin/sh
+set -eu
+# Build with the API credentials supplied by the Portainer stack.
+/bin/sh /astro/daily-rebuild-cron-script.sh
 crond
-nginx -g 'daemon off;'
+exec nginx -g 'daemon off;'
