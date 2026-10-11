@@ -24,8 +24,17 @@ export interface Playlist {
 }
 
 export const getPlaylist = async (playlistId: string) => {
+    if (!import.meta.env.YOUTUBE_API_KEY) return { items: [] } as Playlists;
     const youtubePlaylistApi = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&key=${import.meta.env.YOUTUBE_API_KEY}`;
-    return await fetch(`${youtubePlaylistApi}${playlistId}`).then(r => r.json()) as Playlists
+    try {
+        const response = await fetch(`${youtubePlaylistApi}&playlistId=${playlistId}`, {
+            signal: AbortSignal.timeout(15000)
+        });
+        if (response.ok) return await response.json() as Playlists;
+    } catch {
+        console.warn('YouTube playlist is unavailable for this build.');
+    }
+    return { items: [] } as Playlists;
 };
 
 export const youtubeVideoTemplate = 'https://www.youtube.com/embed/';

@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://g3tech.net',
+	site: 'https://gateway3.net',
 	integrations: [mdx(), sitemap()]
 });
